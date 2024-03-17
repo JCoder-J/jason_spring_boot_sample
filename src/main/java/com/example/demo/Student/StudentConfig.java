@@ -27,7 +27,7 @@ import java.util.Arrays;
 @AllArgsConstructor
 public class StudentConfig {
 
-/*    private JobBuilderFactory jobBuilderFactory;
+    private JobBuilderFactory jobBuilderFactory;
 
     private StepBuilderFactory stepBuilderFactory;
 
@@ -90,9 +90,9 @@ public class StudentConfig {
         return jobBuilderFactory.get("importStudents")
                 .flow(step())
                 .end().build();
-    }*/
+    }
 
-    /*@Bean
+    @Bean
     CommandLineRunner commandLineRunner (StudentRepository repository){
         return args -> {
             Student jason = new Student(
@@ -102,7 +102,7 @@ public class StudentConfig {
             );
 
             Student lucky = new Student(
-                    "Lucky",
+                    "Lucksmie",
                     LocalDate.of(1988, Month.JANUARY, 13),
                     "lucky@lucky.com"
             );
@@ -111,5 +111,5 @@ public class StudentConfig {
                     Arrays.asList(jason, lucky)
             );
         };
-    }*/
+    }
 }

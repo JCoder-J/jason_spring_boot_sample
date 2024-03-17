@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ import java.util.List;
 public class StudentController {
 
     private final StudentService studentService;
-   /* @Autowired
+    @Autowired
     private JobLauncher jobLauncher;
 
     @Autowired
@@ -35,7 +36,7 @@ public class StudentController {
         } catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException | JobParametersInvalidException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
     @Autowired
     private StudentController(StudentService studentService) {
@@ -60,8 +61,9 @@ public class StudentController {
     @PutMapping(path = "{studentId}")
     public void updateStudent(@PathVariable("studentId") Long id,
                               @RequestParam(required = false) String name,
-                              @RequestParam(required = false) String email){
-        studentService.updateStudent(id, name, email);
+                              @RequestParam(required = false) String email,
+                              @RequestParam(required = false) String dob){
+        studentService.updateStudent(id, name, email, dob);
 
     }
 }

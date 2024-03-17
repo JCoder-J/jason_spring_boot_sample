@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +40,7 @@ public class StudentService {
     }
 
     @Transactional
-    public void updateStudent(Long id, String name, String email){
+    public void updateStudent(Long id, String name, String email, String dob){
         if(!studentRepository.findById(id).isPresent()){
             throw new IllegalStateException("Student ID " + id + " does not exist.");
         }
@@ -50,6 +51,9 @@ public class StudentService {
         }
         if (isNotNullOrEmpty(email)) {
             student.setEmail(email);
+        }
+        if (isNotNullOrEmpty(dob)) {
+            student.setDob(LocalDate.parse(dob));
         }
 
         studentRepository.save(student);
